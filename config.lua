@@ -7,8 +7,18 @@ a global executable or a path to
 an executable
 ]]
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
-
 -- general
+function _G.set_terminal_keymaps()
+  local opts = { noremap = true }
+  vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', 'jk', [[<C-\><C-n>]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-h>', [[<C-\><C-n><C-W>h]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-j>', [[<C-\><C-n><C-W>j]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-k>', [[<C-\><C-n><C-W>k]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-l>', [[<C-\><C-n><C-W>l]], opts)
+end
+
+vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.colorscheme = "onedarkpro"
@@ -62,7 +72,7 @@ lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 1
-
+lvim.builtin.nvimtree.setup.git.enable = true
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
   { 'html' },
@@ -73,39 +83,56 @@ lvim.builtin.treesitter.ensure_installed = {
   { "css" },
   { 'tsx' },
 }
-
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
+-- Lua Line Config
+lvim.builtin.lualine.style = "default"
+lvim.builtin.lualine.inactive_sections = {
+  lualine_a = {},
+  lualine_b = {},
+  lualine_c = { 'filename' },
+  lualine_x = { 'location' },
+  lualine_y = {},
+  lualine_z = {}
+}
+lvim.builtin.lualine.sections.lualine_a = { "mode" }
+lvim.builtin.lualine.sections.lualine_b = { "branch", "python_env", "filename", "diagnostics" }
+lvim.builtin.lualine.sections.lualine_c = {}
+lvim.builtin.lualine.sections.lualine_x = { "filetype" }
+lvim.builtin.lualine.sections.lualine_y = { "diff" }
+lvim.builtin.lualine.sections.lualine_z = { "location" }
+lvim.builtin.lualine.options = {
+  icons_enabled = true,
+  theme = 'auto',
+  component_separators = { left = '', right = '' },
+  section_separators = { left = '', right = '' },
+  disabled_filetypes = {},
+  -- always_divide_middle = true,
+  globalstatus = true,
+}
 
-
-
+-- lvim.builtin.lualine.options.theme = "base16"
 -- Additional Plugins
 lvim.plugins = {
-  { "folke/tokyonight.nvim" },
-  {
-    "folke/trouble.nvim",
-    cmd = "TroubleToggle",
-  },
   { 'olimorris/onedarkpro.nvim' },
   { "akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
     require("toggleterm").setup()
   end },
-  {
-    's1n7ax/nvim-terminal',
-    config = function()
-      vim.o.hidden = true
-      require('nvim-terminal').setup()
-    end,
-  },
-  { 'feline-nvim/feline.nvim' },
   { 'martinsione/darkplus.nvim' },
   { 'lukas-reineke/indent-blankline.nvim' },
   { 'rebelot/kanagawa.nvim' },
-  { 'kdheepak/lazygit.nvim' }
-  -- { 'sidebar-nvim/sidebar.nvim' },
-
+  { 'kdheepak/lazygit.nvim' },
 }
--- nnoremap <silent> <leader>gg :LazyGit<CR>
+require "toggleterm".setup {
+  size = 13,
+  open_mapping = [[<c-\>]],
+  shade_filetypes = {},
+  shade_terminals = true,
+  shading_factor = '1',
+  start_in_insert = true,
+  persist_size = true,
+  direction = 'horizontal'
+}
 vim.opt.termguicolors = true
 vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine]]
@@ -130,60 +157,10 @@ require("indent_blankline").setup {
 vim.o.background = "dark" -- to load onedark
 -- vim.o.background = "light" -- to load onelight
 require("onedarkpro").load()
-require('feline').setup()
 -- following option will hide the buffer when it is closed instead of deleting
 -- the buffer. This is important to reuse the last terminal buffer
 -- IF the option is not set, plugin will open a new terminal every single time
 vim.o.hidden = true
-require('nvim-terminal').setup({
-  window = {
-    -- Do `:h :botright` for more information
-    -- NOTE: width or height may not be applied in some "pos"
-    position = 'botright',
-
-    -- Do `:h split` for more information
-    split = 'sp',
-
-    -- Width of the terminal
-    width = 50,
-
-    -- Height of the terminal
-    height = 15,
-  },
-
-  -- keymap to disable all the default keymaps
-  disable_default_keymaps = false,
-
-  -- keymap to toggle open and close terminal window
-  toggle_keymap = '<leader>t',
-
-  -- increase the window height by when you hit the keymap
-  window_height_change_amount = 2,
-
-  -- increase the window width by when you hit the keymap
-  window_width_change_amount = 2,
-
-  -- keymap to increase the window width
-  increase_width_keymap = '<leader><leader>+',
-
-  -- keymap to decrease the window width
-  decrease_width_keymap = '<leader><leader>-',
-
-  -- keymap to increase the window height
-  increase_height_keymap = '<leader>+',
-
-  -- keymap to decrease the window height
-  decrease_height_keymap = '<leader>-',
-
-  terminals = {
-    -- keymaps to open nth terminal
-    { keymap = '<leader>1' },
-    { keymap = '<leader>2' },
-    { keymap = '<leader>3' },
-    { keymap = '<leader>4' },
-    { keymap = '<leader>5' },
-  },
-})
 -- generic LSP settings
 
 -- ---@usage disable automatic installation of servers
