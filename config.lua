@@ -1,4 +1,5 @@
 --[[
+--[[
 lvim is the global options object
 
 Linters should be
@@ -76,16 +77,7 @@ lvim.builtin.lualine.options = {
 lvim.plugins = {
   { 'olimorris/onedarkpro.nvim' },
   { "akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
-    require("toggleterm").setup({
-      size = 13,
-      open_mapping = [[<c-\>]],
-      shade_filetypes = {},
-      shade_terminals = true,
-      shading_factor = '1',
-      start_in_insert = true,
-      persist_size = true,
-      direction = 'horizontal'
-    })
+    require("toggleterm").setup()
   end },
   { 'martinsione/darkplus.nvim' },
   { 'lukas-reineke/indent-blankline.nvim' },
@@ -109,6 +101,7 @@ lvim.plugins = {
   { 'iamcco/markdown-preview.nvim' },
 }
 
+
 vim.cmd([[
   "Add blank line above the current line without exiting normal mode"
   "leader + O"
@@ -121,6 +114,28 @@ vim.cmd([[
   noremap <leader>pp :Glow<CR>"
 ]])
 
+require("toggleterm").setup {
+  size = 20,
+  open_mapping = [[<c-\>]],
+  hide_numbers = true,
+  shade_filetypes = {},
+  shade_terminals = true,
+  shading_factor = 2,
+  start_in_insert = true,
+  insert_mappings = true,
+  persist_size = true,
+  direction = "horizontal",
+  close_on_exit = true,
+  shell = vim.o.shell,
+  float_opts = {
+    border = "curved",
+    winblend = 0,
+    highlights = {
+      border = "Normal",
+      background = "Normal",
+    },
+  },
+}
 vim.opt.termguicolors = true
 vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine]]
@@ -239,4 +254,3 @@ vim.api.nvim_create_autocmd("FileType", {
 --   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
 --   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Wordspace Diagnostics" },
 -- }
-
