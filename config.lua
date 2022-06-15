@@ -57,6 +57,7 @@ lvim.builtin.lualine.inactive_sections = {
   lualine_y = {},
   lualine_z = {}
 }
+
 lvim.builtin.lualine.sections.lualine_a = { "mode" }
 lvim.builtin.lualine.sections.lualine_b = { "branch", "python_env", "filename", "diagnostics" }
 lvim.builtin.lualine.sections.lualine_c = {}
@@ -71,6 +72,7 @@ lvim.builtin.lualine.options = {
   disabled_filetypes = {},
   -- always_divide_middle = true,
   globalstatus = true,
+  path = 1
 }
 
 -- Additional Plugins
