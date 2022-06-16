@@ -7,25 +7,23 @@ filled in as strings with either
 a global executable or a path to
 an executable
 ]]
--- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
--- general
+
+-- General
 lvim.log.level = "warn"
 lvim.format_on_save = true
+
+-- Theme
 lvim.colorscheme = "onedarkpro"
+require("onedarkpro").load()
+-- to load onedark
+vim.o.background = "dark"
+
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
--- add your own keymapping
--- lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
--- unmap a default keymapping
--- vim.keymap.del("n", "<C-Up>")
--- override a default keymapping
--- lvim.keys.normal_mode["<C-q>"] = ":q<cr>" -- or vim.keymap.set("n", "<C-q>", ":q<cr>" )
 
-
--- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
@@ -47,6 +45,7 @@ lvim.builtin.treesitter.ensure_installed = {
 }
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
+
 -- Lua Line Config
 lvim.builtin.lualine.style = "default"
 lvim.builtin.lualine.inactive_sections = {
@@ -79,7 +78,30 @@ lvim.builtin.lualine.options = {
 lvim.plugins = {
   { 'olimorris/onedarkpro.nvim' },
   { "akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
-    require("toggleterm").setup()
+    require("toggleterm").setup(
+      {
+        size = 20,
+        open_mapping = [[<space-t>]],
+        hide_numbers = true,
+        shade_filetypes = {},
+        shade_terminals = true,
+        shading_factor = 2,
+        start_in_insert = true,
+        insert_mappings = true,
+        persist_size = true,
+        direction = "float",
+        close_on_exit = true,
+        shell = vim.o.shell,
+        float_opts = {
+          border = "shadow",
+          winblend = 3,
+          highlights = {
+            border = "#333333",
+            background = "#000",
+          },
+        },
+      }
+    )
   end },
   { 'martinsione/darkplus.nvim' },
   { 'lukas-reineke/indent-blankline.nvim' },
@@ -116,28 +138,6 @@ vim.cmd([[
   noremap <leader>pp :Glow<CR>"
 ]])
 
-require("toggleterm").setup {
-  size = 20,
-  open_mapping = [[<c-\>]],
-  hide_numbers = true,
-  shade_filetypes = {},
-  shade_terminals = true,
-  shading_factor = 2,
-  start_in_insert = true,
-  insert_mappings = true,
-  persist_size = true,
-  direction = "horizontal",
-  close_on_exit = true,
-  shell = vim.o.shell,
-  float_opts = {
-    border = "curved",
-    winblend = 0,
-    highlights = {
-      border = "Normal",
-      background = "Normal",
-    },
-  },
-}
 vim.opt.termguicolors = true
 vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine]]
@@ -159,13 +159,12 @@ require("indent_blankline").setup {
     "IndentBlanklineIndent6",
   },
 }
-vim.o.background = "dark" -- to load onedark
--- vim.o.background = "light" -- to load onelight
-require("onedarkpro").load()
--- following option will hide the buffer when it is closed instead of deleting
--- the buffer. This is important to reuse the last terminal buffer
--- IF the option is not set, plugin will open a new terminal every single time
+
+-- Persist Terminal
 vim.o.hidden = true
+
+-- LSP, Linting and Formatting
+-------------------------------------
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
@@ -214,17 +213,6 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-
-
--- thats all folks...
-------------------------------------------------------------------------
-
-
-
-
-
-
-
 -- Undecided stuff
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
@@ -256,3 +244,10 @@ vim.api.nvim_create_autocmd("FileType", {
 --   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
 --   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Wordspace Diagnostics" },
 -- }
+
+-- add your own keymapping
+-- lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+-- unmap a default keymapping
+-- vim.keymap.del("n", "<C-Up>")
+-- override a default keymapping
+-- lvim.keys.normal_mode["<C-q>"] = ":q<cr>" -- or vim.keymap.set("n", "<C-q>", ":q<cr>" )
