@@ -7,7 +7,33 @@ filled in as strings with either
 a global executable or a path to
 an executable
 ]]
-
+----------------------------
+-- Additional Plugins
+----------------------------
+lvim.plugins = {
+  { 'olimorris/onedarkpro.nvim' },
+  { 'martinsione/darkplus.nvim' },
+  { 'lukas-reineke/indent-blankline.nvim' },
+  { 'rebelot/kanagawa.nvim' },
+  { 'kdheepak/lazygit.nvim' },
+  -- { 'mg979/vim-visual-multi' },
+  { "ray-x/lsp_signature.nvim" },
+  { 'folke/lsp-colors.nvim' },
+  {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  },
+  { "ellisonleao/glow.nvim", branch = 'main' },
+  { 'iamcco/markdown-preview.nvim' },
+  -- { 'wbthomason/packer.nvim' }
+}
 ----------------------------
 -- General
 ----------------------------
@@ -17,7 +43,6 @@ lvim.format_on_save = true
 lvim.colorscheme = "onedarkpro"
 vim.o.background = "dark" -- to load onedark
 -- vim.o.background = "light" -- to load onelight
-require("onedarkpro").load()
 
 ----------------------------
 -- Alpha
@@ -49,11 +74,9 @@ lvim.builtin.terminal.active = true
 -- the buffer. This is important to reuse the last terminal buffer
 -- IF the option is not set, plugin will open a new terminal every single time
 vim.o.hidden = true
-lvim.builtin.autopairs = {}
 
 -- Toggleterm
-require("toggleterm").setup
-{
+require("toggleterm").setup{
   hide_numbers = true,
   shade_filetypes = {},
   shade_terminals = true,
@@ -161,36 +184,6 @@ lvim.builtin.telescope.defaults.file_ignore_patterns = {
 --   }
 -- }
 
-----------------------------
--- Additional Plugins
-----------------------------
-lvim.plugins = {
-  { 'olimorris/onedarkpro.nvim' },
-  { 'martinsione/darkplus.nvim' },
-  { 'lukas-reineke/indent-blankline.nvim' },
-  { 'rebelot/kanagawa.nvim' },
-  { 'kdheepak/lazygit.nvim' },
-  -- { 'mg979/vim-visual-multi' },
-  { "ray-x/lsp_signature.nvim" },
-  { 'folke/lsp-colors.nvim' },
-  {
-    "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("trouble").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
-    end
-  },
-  { "ellisonleao/glow.nvim", branch = 'main' },
-  { 'iamcco/markdown-preview.nvim' },
-  -- { 'wbthomason/packer.nvim' }
-}
-
-
-
 ------------------------------
 -- Vim Commands
 ------------------------------
@@ -220,7 +213,7 @@ vim.cmd [[highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine]]
 
 vim.opt.list = true
 vim.opt.listchars:append("space: ")
-
+require("onedarkpro").load()
 require("indent_blankline").setup {
   char_highlight_list = {
     "IndentBlanklineIndent1",
@@ -231,20 +224,6 @@ require("indent_blankline").setup {
     "IndentBlanklineIndent6",
   },
 }
-
--- Autocommands (https://neovim.io/doc/user/autocmd.html)
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = { "*.json", "*.jsonc" },
-  -- enable wrap mode for json files only
-  command = "setlocal wrap",
-})
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "zsh",
-  callback = function()
-    -- let treesitter use bash highlight for zsh files as well
-    require("nvim-treesitter.highlight").attach(0, "bash")
-  end,
-})
 
 -- LSP - Formatting and Linting
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
@@ -281,3 +260,16 @@ linters.setup {
   },
 }
 
+-- Autocommands (https://neovim.io/doc/user/autocmd.html)
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = { "*.json", "*.jsonc" },
+  -- enable wrap mode for json files only
+  command = "setlocal wrap",
+})
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "zsh",
+  callback = function()
+    -- let treesitter use bash highlight for zsh files as well
+    require("nvim-treesitter.highlight").attach(0, "bash")
+  end,
+})
