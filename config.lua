@@ -117,7 +117,7 @@ lvim.builtin.lualine.inactive_sections = {
 -- Treesitter
 ----------------------------
 lvim.builtin.treesitter = {
-  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = { "" }, -- List of parsers to ignore installing
   autopairs = {
     enable = true,
