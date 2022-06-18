@@ -8,61 +8,91 @@ a global executable or a path to
 an executable
 ]]
 
+----------------------------
 -- General
+----------------------------
+lvim.leader = "space"
 lvim.log.level = "warn"
 lvim.format_on_save = true
-
--- Theme
 lvim.colorscheme = "onedarkpro"
+vim.o.background = "dark" -- to load onedark
+-- vim.o.background = "light" -- to load onelight
 require("onedarkpro").load()
--- to load onedark
-vim.o.background = "dark"
 
--- to disable icons and use a minimalist setup, uncomment the following
--- lvim.use_icons = false
-
--- keymappings [view all the defaults by pressing <leader>Lk]
-lvim.leader = "space"
-
--- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
+----------------------------
+-- Alpha
+----------------------------
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
+
+----------------------------
+-- Lua Line
+----------------------------
 lvim.builtin.notify.active = true
+
+----------------------------
+-- Terminal
+----------------------------
 lvim.builtin.terminal.active = true
+-- lvim.builtin.terminal.close_on_exit = true
+-- lvim.builtin.terminal.hide_numbers = true
+-- lvim.builtin.terminal.direction = "floatd"
+-- lvim.builtin.terminal.float_opts = {
+--   border = "curved",
+--   winblend = 20,
+--   highlights = {
+--     border = "Normal",
+--     background = "Normal",
+--   },
+-- }
+-- following option will hide the buffer when it is closed instead of deleting
+-- the buffer. This is important to reuse the last terminal buffer
+-- IF the option is not set, plugin will open a new terminal every single time
+vim.o.hidden = true
+lvim.builtin.autopairs = {}
+
+-- Toggleterm
+require("toggleterm").setup
+{
+  hide_numbers = true,
+  shade_filetypes = {},
+  shade_terminals = true,
+  shading_factor = 10,
+  start_in_insert = true,
+  insert_mappings = true,
+  persist_size = true,
+  direction = "float",
+  close_on_exit = true,
+  shell = vim.o.shell,
+  float_opts = {
+    border = "shadow",
+    winblend = 0,
+    highlights = {
+      border = "#000",
+      background = "black",
+    },
+  },
+}
+
+
+----------------------------
+-- Nvimtree
+----------------------------
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 1
 lvim.builtin.nvimtree.setup.git.enable = true
--- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = {
-  { 'html' },
-  { 'typescript' },
-  { 'javascript' },
-  { "python" },
-  { "json" },
-  { "css" },
-  { 'tsx' },
-  { 'markdown' }
-}
-lvim.builtin.treesitter.ignore_install = { "haskell" }
-lvim.builtin.treesitter.highlight.enabled = true
 
--- Lua Line Config
+----------------------------
+-- Lua Line
+----------------------------
 lvim.builtin.lualine.style = "default"
-lvim.builtin.lualine.inactive_sections = {
-  lualine_a = {},
-  lualine_b = {},
-  lualine_c = { 'filename' },
-  lualine_x = { 'location' },
-  lualine_y = {},
-  lualine_z = {}
-}
-
 lvim.builtin.lualine.sections.lualine_a = { "mode" }
 lvim.builtin.lualine.sections.lualine_b = { "branch", "python_env", "filename", "diagnostics" }
 lvim.builtin.lualine.sections.lualine_c = {}
 lvim.builtin.lualine.sections.lualine_x = { "filetype" }
 lvim.builtin.lualine.sections.lualine_y = { "diff" }
 lvim.builtin.lualine.sections.lualine_z = { "progress", "location" }
+
 lvim.builtin.lualine.options = {
   icons_enabled = true,
   theme = 'auto',
@@ -74,35 +104,68 @@ lvim.builtin.lualine.options = {
   path = 1
 }
 
+lvim.builtin.lualine.inactive_sections = {
+  lualine_a = {},
+  lualine_b = {},
+  lualine_c = { 'filename' },
+  lualine_x = { 'location' },
+  lualine_y = {},
+  lualine_z = {}
+}
+
+----------------------------
+-- Treesitter
+----------------------------
+lvim.builtin.treesitter = {
+  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = { "" }, -- List of parsers to ignore installing
+  autopairs = {
+    enable = true,
+  },
+  highlight = {
+    enable = true, -- false will disable the whole extension
+    additional_vim_regex_highlighting = true,
+  },
+  indent = {
+    enable = true,
+  },
+  context_commentstring = {
+    enable = true
+  },
+  autotag = {
+    enable = true
+  },
+}
+
+----------------------------
+-- Telescope
+----------------------------
+-- Soft wrap text in preview
+vim.cmd([[
+  autocmd User TelescopePreviewerLoaded setlocal wrap
+]])
+
+lvim.builtin.telescope.defaults.file_ignore_patterns = {
+  "node_modules/**",
+  ".pycache/**",
+  "env/**",
+  "venv/**",
+  "myenv/**"
+}
+
+-- lvim.builtin.telescope.defaults.path_dispLlay = { "smart" }
+
+-- lvim.builtin.telescope = {
+--   defaults = {
+--     path_display = { "smart" },
+--   }
+-- }
+
+----------------------------
 -- Additional Plugins
+----------------------------
 lvim.plugins = {
   { 'olimorris/onedarkpro.nvim' },
-  { "akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
-    require("toggleterm").setup(
-      {
-        size = 20,
-        open_mapping = [[<space-t>]],
-        hide_numbers = true,
-        shade_filetypes = {},
-        shade_terminals = true,
-        shading_factor = 2,
-        start_in_insert = true,
-        insert_mappings = true,
-        persist_size = true,
-        direction = "float",
-        close_on_exit = true,
-        shell = vim.o.shell,
-        float_opts = {
-          border = "shadow",
-          winblend = 3,
-          highlights = {
-            border = "#333333",
-            background = "#000",
-          },
-        },
-      }
-    )
-  end },
   { 'martinsione/darkplus.nvim' },
   { 'lukas-reineke/indent-blankline.nvim' },
   { 'rebelot/kanagawa.nvim' },
@@ -123,9 +186,14 @@ lvim.plugins = {
   },
   { "ellisonleao/glow.nvim", branch = 'main' },
   { 'iamcco/markdown-preview.nvim' },
+  -- { 'wbthomason/packer.nvim' }
 }
 
 
+
+------------------------------
+-- Vim Commands
+------------------------------
 vim.cmd([[
   "Add blank line above the current line without exiting normal mode"
   "leader + O"
@@ -136,8 +204,16 @@ vim.cmd([[
 
   "Glow Markdown Preview - leader + p + p
   noremap <leader>pp :Glow<CR>"
+
+  set wrap
+  set linebreak
+
 ]])
 
+require("toggleterm").setup {
+  size = 20,
+  open_mapping = [[<c-\>]],
+}
 vim.opt.termguicolors = true
 vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine]]
@@ -160,45 +236,6 @@ require("indent_blankline").setup {
   },
 }
 
--- Persist Terminal
-vim.o.hidden = true
-
--- LSP, Linting and Formatting
--------------------------------------
--- -- set a formatter, this will override the language server formatting capabilities (if it exists)
-local formatters = require "lvim.lsp.null-ls.formatters"
-formatters.setup {
-  { command = "black", filetypes = { "python" } },
-  { command = "isort", filetypes = { "python" } },
-  {
-    -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
-    command = "prettier",
-    --........arguments to pass to the formatter
-    -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
-    extra_args = { "--print-with", "100" },
-    -- -speci.............fy which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    filetypes = { "typescript", "typescriptreact", "tsx", "html", "css", "jsx", "javascript" },
-  },
-}
-
--- -- set additional linters
-local linters = require "lvim.lsp.null-ls.linters"
-linters.setup {
-  { command = "flake8", filetypes = { "python" } },
-  {
-    -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
-    command = "shellcheck",
-    -- -argum.............ents to pass to the formatter
-    -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
-    extra_args = { "--severity", "warning" },
-  },
-  {
-    command = "codespell",
-    -- -speci.............fy which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    filetypes = { "javascript", "python" },
-  },
-}
-
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = { "*.json", "*.jsonc" },
@@ -213,41 +250,38 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- Undecided stuff
+-- LSP - Formatting and Linting
+-- -- set a formatter, this will override the language server formatting capabilities (if it exists)
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  { command = "black", filetypes = { "python" } },
+  { command = "isort", filetypes = { "python" } },
+  {
+    -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
+    command = "prettier",
+    ---@usage arguments to pass to the formatter
+    -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
+    extra_args = { "--print-width", "100" },
+    ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
+    filetypes = { "typescript", "typescriptreact", "html", "css", "javascript", "javascriptreact" },
+  },
+}
 
--- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
--- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
--- local _, actions = pcall(require, "telescope.actions")
--- lvim.builtin.telescope.defaults.mappings = {
---   -- for input mode
---   i = {
---     ["<C-j>"] = actions.move_selection_next,
---     ["<C-k>"] = actions.move_selection_previous,
---     ["<C-n>"] = actions.cycle_history_next,
---     ["<C-p>"] = actions.cycle_history_prev,
---   },
---   -- for normal mode
---   n = {
---     ["<C-j>"] = actions.move_selection_next,
---     ["<C-k>"] = actions.move_selection_previous,
---   },
--- }
+-- -- set additional linters
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  { command = "flake8", filetypes = { "python" } },
+  {
+    -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
+    command = "shellcheck",
+    ---@usage arguments to pass to the formatter
+    -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
+    extra_args = { "--severity", "warning" },
+  },
+  {
+    command = "codespell",
+    ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
+    filetypes = { "javascript", "python" },
+  },
+}
 
--- Use which-key to add extra bindings with the leader-key prefix
--- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
--- lvim.builtin.which_key.mappings["t"] = {
---   name = "+Trouble",
---   r = { "<cmd>Trouble lsp_references<cr>", "References" },
---   f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
---   d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
---   q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
---   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
---   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Wordspace Diagnostics" },
--- }
-
--- add your own keymapping
--- lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
--- unmap a default keymapping
--- vim.keymap.del("n", "<C-Up>")
--- override a default keymapping
--- lvim.keys.normal_mode["<C-q>"] = ":q<cr>" -- or vim.keymap.set("n", "<C-q>", ":q<cr>" )
