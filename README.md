@@ -2,7 +2,6 @@
 ## devKit - A cross-platform, elegeant modern web dev environment 
 ##### The developer tools you need to get you *the developer experience (and efficiency!) that you deserve*™️
  
-### What's Included:
 #### General
   ###### Messaging
   - [Slack](https://slack.com/)
