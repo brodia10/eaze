@@ -6,8 +6,10 @@
 
 # To Do
 - [Ansible](https://www.ansible.com/resources/get-started) - to automate setting up my whole dev environement.
+ 
+### Vim + Neovim Plugin Wiki (SO GOOD!)
+https://vimawesome.com/
 
-# Resources 
-## Dev Productivity
+### Dev Productivity
 The Primeagen
 https://frontendmasters.com/courses/developer-productivity/
