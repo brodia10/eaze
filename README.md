@@ -2,13 +2,11 @@
 ## devKit - A cross-platform, elegeant modern web dev environment 
 ##### The developer tools you need to get you *the developer experience (and efficiency!) that you deserve*™️
  
-#### General
   ###### Messaging
   - [Slack](https://slack.com/)
   ###### Browsers
   - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
   - [Google Chrome](https://www.google.com/chrome/)
-#### Core 
   ###### Terminal Emulator
   - [alacritty](https://github.com/alacritty/alacritty)
   ###### Text Editor/IDE 
