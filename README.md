@@ -2,16 +2,13 @@
 ## devKit - A cross-platform, elegeant modern web dev environment 
 ##### The developer tools you need to get you *the developer experience (and efficiency!) that you deserve*™️
  
-  ###### Messaging
-  - [Slack](https://slack.com/)
-  ###### Browsers
-  - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
-  - [Google Chrome](https://www.google.com/chrome/)
   ###### Terminal Emulator
   - [alacritty](https://github.com/alacritty/alacritty)
   ###### Text Editor/IDE 
   - [neovim](https://neovim.io/)
   - [lunar vim](https://www.lunarvim.org) - An opinionated superset of [neovim](https://neovim.io/) (which is a superset of [vim](https://www.vim.org/))
+  ###### Window/Session Manager
+  - [tmux](https://github.com/tmux/tmux/wiki)
   ###### Version Control
   - [git](https://git-scm.com/)
   ###### Javascript/Typescript
@@ -19,6 +16,7 @@
   - [n](https://www.npmjs.com/package/n) (alternative to nvm)
   - [yarn](https://yarnpkg.com/)
   - [typescript](https://www.typescriptlang.org/)
+  - [expo](https://docs.expo.dev/)
   ###### Python
   - [python](https://www.python.org/)
   - [pyenv](https://github.com/pyenv/pyenv)
@@ -40,6 +38,11 @@
    - - [Homebrew](http://brew.sh/)
    - Linux (Debian/Ubuntu) 
    - - apt
+  ###### Messaging
+  - [Slack](https://slack.com/)
+  ###### Browsers
+  - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
+  - [Google Chrome](https://www.google.com/chrome/)
   ###### Other
    - go
    - hub
