@@ -1,8 +1,53 @@
 
 ## devKit
-
-The dev experience (and effiency!) that you deserve™️
+#### The developer tools you need, that get you the developer experience (and effiency!) that you deserve™️
  
+## What you get
+###### General
+  ###### Messaging
+  - [Slack](https://slack.com/)
+  ###### Browsers
+  - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
+  - [Google Chrome](https://www.google.com/chrome/)
+##### Core 
+  ###### OS Package Manager
+    - OSx - [Homebrew](http://brew.sh/)
+    - Linux (Debian/Ubuntu) - apt
+  ###### Version Control
+  - git
+  ###### Terminal Emulator
+  - [alacritty](https://github.com/alacritty/alacritty)
+  ###### Text Editor/IDE 
+  - [neovim](https://neovim.io/)
+  - [lunar vim](https://www.lunarvim.org) - An opinionated superset of [neovim](https://neovim.io/) (which is a superset of [vim](https://www.vim.org/))
+  ###### Javascript/Typescript
+  - node
+  - n (alternative to nvm)
+  - yarn
+  - typescript
+  ##### Python
+  - python
+  - pyenv
+  ###### Docker
+   - [Docker](https://www.docker.com/)
+  ###### Networking/SSH/Auth
+   - mcrypt
+   - nmap
+   - gpg
+   - ssh-copy-id
+   - cowsay
+   - readline
+   - openssl
+   - pv
+   - wget
+  ###### Other
+   - go
+   - hub
+   - httpie
+   - iperf
+   - libevent
+   - sqlite
+
 ## Check out
 ### Vim + Neovim Plugin Wiki
 https://vimawesome.com/
@@ -19,21 +64,6 @@ possible cons to this?
 - only for macOS
 
 Probably will want to fork that and devKit can be a "flavor" of that.
-
-## Included Applications / Configuration (Default)
-
-Applications (installed with Homebrew Cask):
-
-  - [ChromeDriver](https://sites.google.com/chromium.org/driver/)
-  - [Docker](https://www.docker.com/)
-  - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
-  - [Google Chrome](https://www.google.com/chrome/)
-  - [Homebrew](http://brew.sh/)
-  - [Lunar Vim](https://www.lunarvim.org) - An opinionated superset of [neovim](https://neovim.io/) (which is a superset of [vim](https://www.vim.org/))
-  - [Slack](https://slack.com/)
-  - [Tmux](https://github.com/tmux/tmux/wiki) - with [tmux config](https://github.com/samoshkin/tmux-config)
-
-
 #### Automate devKit:
 - [Ansible](https://www.ansible.com/resources/get-started) - for automating the deployment and maintainence of server configurations
 - - Install alacritty
