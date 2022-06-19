@@ -13,7 +13,7 @@ The Primeagen
 https://frontendmasters.com/courses/developer-productivity/
 
 ## To Do - Dev Kit
-- [Ansible](https://www.ansible.com/resources/get-started) - for automating the deployment and maintainence of server configurations.
+- [Ansible](https://www.ansible.com/resources/get-started) - for automating the deployment and maintainence of server configurations
 - - Install alacritty
 - - Install brew
 - - - Install OhMyZsh
@@ -24,6 +24,7 @@ https://frontendmasters.com/courses/developer-productivity/
 - - - - Install n (alternative to nvm) 
 - - - - Install typescript
 - - - - Install yarn
+- - - Install docker
 - - - Install neovim
 - - Install lunar vim
 - - Install tmux
