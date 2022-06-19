@@ -1,7 +1,5 @@
-# dotfiles
-Configs 4 life yay
 
-# Setup
+# Configs 4 life yay
 - Lunar Vim (wrapper around neovim)
 - Tmux - with [tmux config](https://github.com/samoshkin/tmux-config)
 
