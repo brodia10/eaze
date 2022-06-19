@@ -4,7 +4,7 @@
 - [Tmux](https://github.com/tmux/tmux/wiki) - with [tmux config](https://github.com/samoshkin/tmux-config)
 - OhMyZsh - framework for zsh
  
-## Resources/Learning
+## Check out
 ### Vim + Neovim Plugin Wiki (SO GOOD!)
 https://vimawesome.com/
 
