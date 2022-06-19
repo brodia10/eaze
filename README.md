@@ -3,29 +3,26 @@
 ##### The developer tools you need to get you *the developer experience (and efficiency!) that you deserve*™️
  
 ### What's Included:
-##### General
+#### General
   ###### Messaging
   - [Slack](https://slack.com/)
   ###### Browsers
   - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
   - [Google Chrome](https://www.google.com/chrome/)
-##### Core 
-  ###### OS Package Manager
-    - OSx - [Homebrew](http://brew.sh/)
-    - Linux (Debian/Ubuntu) - apt
-  ###### Version Control
-  - git
+#### Core 
   ###### Terminal Emulator
   - [alacritty](https://github.com/alacritty/alacritty)
   ###### Text Editor/IDE 
   - [neovim](https://neovim.io/)
   - [lunar vim](https://www.lunarvim.org) - An opinionated superset of [neovim](https://neovim.io/) (which is a superset of [vim](https://www.vim.org/))
+  ###### Version Control
+  - git
   ###### Javascript/Typescript
   - node
   - n (alternative to nvm)
   - yarn
   - typescript
-  ##### Python
+  ###### Python
   - python
   - pyenv
   ###### Docker
@@ -40,6 +37,9 @@
    - openssl
    - pv
    - wget
+  ###### OS Package Manager
+   - OSx - [Homebrew](http://brew.sh/)
+   - Linux (Debian/Ubuntu) - apt
   ###### Other
    - go
    - hub
