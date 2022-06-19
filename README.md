@@ -13,7 +13,7 @@ The Primeagen
 https://frontendmasters.com/courses/developer-productivity/
 
 ## To Do 
-- Automate devKit
+#### Automate devKit:
 - [Ansible](https://www.ansible.com/resources/get-started) - for automating the deployment and maintainence of server configurations
 - - Install alacritty
 - - Install brew
