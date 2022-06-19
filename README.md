@@ -13,15 +13,16 @@
   - [neovim](https://neovim.io/)
   - [lunar vim](https://www.lunarvim.org) - An opinionated superset of [neovim](https://neovim.io/) (which is a superset of [vim](https://www.vim.org/))
   ###### Version Control
-  - git
+  - [git](https://git-scm.com/)
   ###### Javascript/Typescript
-  - node
-  - n (alternative to nvm)
-  - yarn
-  - typescript
+  - [node](https://nodejs.org/en/)
+  - [n](https://www.npmjs.com/package/n) (alternative to nvm)
+  - [yarn](https://yarnpkg.com/)
+  - [typescript](https://www.typescriptlang.org/)
   ###### Python
-  - python
-  - pyenv
+  - [python](https://www.python.org/)
+  - [pyenv](https://github.com/pyenv/pyenv)
+  - [virtualenvwrapper](https://pypi.org/project/virtualenvwrapper/) (alternative to virtualenv)
   ###### Docker
    - [Docker](https://www.docker.com/)
   ###### Networking/SSH/Auth
@@ -35,8 +36,10 @@
    - pv
    - wget
   ###### OS Package Manager
-   - OSx - [Homebrew](http://brew.sh/)
-   - Linux (Debian/Ubuntu) - apt
+   - OSx 
+   - - [Homebrew](http://brew.sh/)
+   - Linux (Debian/Ubuntu) 
+   - - apt
   ###### Other
    - go
    - hub
