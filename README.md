@@ -1,8 +1,7 @@
 
 ## devKit
-- [Lunar Vim](https://www.lunarvim.org) - An opinionated superset of [neovim](https://neovim.io/) (which is a superset of [vim](https://www.vim.org/))
-- [Tmux](https://github.com/tmux/tmux/wiki) - with [tmux config](https://github.com/samoshkin/tmux-config)
-- [OhMyZsh](https://ohmyz.sh/) - framework for zsh
+
+
  
 ## Check out
 ### Vim + Neovim Plugin Wiki
@@ -20,6 +19,20 @@ possible cons to this?
 - only for macOS
 
 Probably will want to fork that and devKit can be a "flavor" of that.
+
+## Included Applications / Configuration (Default)
+
+Applications (installed with Homebrew Cask):
+
+  - [ChromeDriver](https://sites.google.com/chromium.org/driver/)
+  - [Docker](https://www.docker.com/)
+  - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
+  - [Google Chrome](https://www.google.com/chrome/)
+  - [Homebrew](http://brew.sh/)
+  - [Lunar Vim](https://www.lunarvim.org) - An opinionated superset of [neovim](https://neovim.io/) (which is a superset of [vim](https://www.vim.org/))
+  - [Slack](https://slack.com/)
+  - [Tmux](https://github.com/tmux/tmux/wiki) - with [tmux config](https://github.com/samoshkin/tmux-config)
+
 
 #### Automate devKit:
 - [Ansible](https://www.ansible.com/resources/get-started) - for automating the deployment and maintainence of server configurations
