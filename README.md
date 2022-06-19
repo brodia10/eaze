@@ -30,7 +30,13 @@
   - [virtualenvwrapper](https://pypi.org/project/virtualenvwrapper/) (alternative to virtualenv)
   ###### Docker
    - [Docker](https://www.docker.com/)
+  ###### OS Package Manager
+  - OSx 
+  - - [Homebrew](http://brew.sh/)
+  - Linux (Debian/Ubuntu) 
+  - - apt
   ###### Networking/SSH/Auth
+   - wget
    - mcrypt
    - nmap
    - gpg
@@ -39,19 +45,6 @@
    - readline
    - openssl
    - pv
-   - wget
-  ###### OS Package Manager
-   - OSx 
-   - - [Homebrew](http://brew.sh/)
-   - Linux (Debian/Ubuntu) 
-   - - apt
-  ###### Other
-   - go
-   - hub
-   - httpie
-   - iperf
-   - libevent
-   - sqlite
 
 ## Check out
 ### Vim + Neovim Plugin Wiki
