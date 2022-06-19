@@ -1,5 +1,5 @@
 # dotfiles
-dotfiles
+Configs 4 life yay
 
 # Setup
 - Lunar Vim (wrapper around neovim)
