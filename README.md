@@ -13,6 +13,14 @@ The Primeagen
 https://frontendmasters.com/courses/developer-productivity/
 
 ## To Do 
+####
+This pretty much looks exactly like what I want to do lol
+https://github.com/geerlingguy/mac-dev-playbook
+possible cons to this?
+- only for macOS
+
+Probably will want to fork that and devKit can be a "flavor" of that.
+
 #### Automate devKit:
 - [Ansible](https://www.ansible.com/resources/get-started) - for automating the deployment and maintainence of server configurations
 - - Install alacritty
