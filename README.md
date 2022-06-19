@@ -1,6 +1,6 @@
 
 ## devKit
-#### The developer tools you need that get you the developer experience (and effiency!) that you deserve™️
+##### The developer tools you need to get you the *developer experience (and efficiency!) that you deserve*™️
  
 ## What you get
 ##### General
