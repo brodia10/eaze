@@ -1,7 +1,13 @@
 
 ## devKit - An elegeant, modern, and cross-platform web dev environment 
 ##### The developer tools you need to get you *the developer experience (and efficiency!) that you deserve*™️
- 
+  This is my personal ansible playbook that I've made for my developement environment. Everything from system packages to desktop applications are setup automatically just by running a script. pretty great.
+
+  It includes everything you'd need for modern web development on [macOSx]() and Linux [Debian](https://www.debian.org/)/[Ubuntu](https://ubuntu.com/). I specifically focused more on **Javascript** and **Python**, but you could easily configure this to focus on other languages/types of development such as php, go, etc.
+### Philosophy
+  - do more with less
+  - developer experience first
+
   ###### Messaging
   - [Slack](https://slack.com/)
   ###### Browsers
@@ -38,13 +44,13 @@
   ###### Networking/SSH/Auth
    - wget
    - mcrypt
-   - nmap
+   - nmap 
    - gpg
    - ssh-copy-id
    - cowsay
    - readline
    - openssl
-   - pv
+   - pv 
 
 ## Check out
 ### Vim + Neovim Plugin Wiki
