@@ -1,5 +1,5 @@
 
-## devKit - A cross-platform, elegeant modern web dev environment 
+## devKit - An elegeant, modern, and cross-platform web dev environment 
 ##### The developer tools you need to get you *the developer experience (and efficiency!) that you deserve*™️
  
   ###### Messaging
