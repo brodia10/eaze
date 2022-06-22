@@ -71,6 +71,11 @@ https://frontendmasters.com/courses/developer-productivity/
 
 ## To Do 
 
+Neovim has no support for python venvs. 
+[direnv](https://direnv.net/) + tmux seemes to be the solution for this. Configuring envs per directory
+
+
+Done
 #### Tmux persist reboot
 https://github.com/tmux-plugins/tmux-resurrect
 
