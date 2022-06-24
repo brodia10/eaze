@@ -1,5 +1,5 @@
 
-## devKit - An elegeant, modern, and cross-platform web dev environment
+## devKit - An elegeant, modern, and cross-platform development environment
 
 **  the developer experience that you deserve™️
 <br>
@@ -17,6 +17,7 @@ As a dev 99% percent of my time is spent in:
   - developer experience first
   - vim 
 
+### Contents
   ###### Messaging
   - [Slack](https://slack.com/)
   ###### Browsers
@@ -60,14 +61,6 @@ As a dev 99% percent of my time is spent in:
    - readline
    - openssl
    - pv 
-
-## Check out
-### Vim + Neovim Plugin Wiki
-https://vimawesome.com/
-
-### Dev Productivity
-The Primeagen
-https://frontendmasters.com/courses/developer-productivity/
 
 ## To Do 
 
