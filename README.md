@@ -4,6 +4,50 @@
 **  the developer experience that you deserve™️
 <br>
 
+## To Do 
+#### ASDF - one version manager to rule them all built by the Homebrew team.
+https://asdf-vm.com/guide/introduction.html#how-it-works
+
+
+#### Neovim has no support for python venvs. 
+Possible solutions:
+
+[direnv](https://direnv.net/) + tmux seemes to be the solution for this. Configuring envs on a directory basis
+setup: https://direnv.net/man/direnv.1.html
+
+#### Vimhack dotfiles super dope similar to this 
+https://api.mtr.pub/vimhack/dotfiles
+
+Done
+#### Tmux persist reboot
+https://github.com/tmux-plugins/tmux-resurrect
+
+#### Fork mac-dev-playbook
+This pretty much looks exactly like what I want to do lol
+https://github.com/geerlingguy/mac-dev-playbook
+possible cons to this?
+- only for macOS
+
+Probably will want to fork that and devKit can be a "flavor" of that.
+
+#### Ansible Playbook sketch:
+- [Ansible](https://www.ansible.com/resources/get-started) - for automating the deployment and maintainence of server configurations
+- - Install alacritty
+- - Install brew
+- - - Install OhMyZsh
+- - - Install python
+- - - - Install pyenv
+- - - - Install virtualenvwrapper - (alternative to virtualenv)
+- - - Install node
+- - - - Install n (alternative to nvm) 
+- - - - Install typescript
+- - - - Install yarn
+- - - Install docker
+- - - Install neovim
+- - Install lunar vim
+- - Install tmux
+- - - Install tmux config
+
 It includes everything you'd need for modern web development on [macOSx]() and Linux [Debian](https://www.debian.org/)/[Ubuntu](https://ubuntu.com/). I specifically focused more on **Javascript** and **Python**, but you could easily configure this to focus on other languages/types of development such as php, go, etc.
 
 As a dev 99% percent of my time is spent in:
@@ -62,40 +106,4 @@ As a dev 99% percent of my time is spent in:
    - openssl
    - pv 
 
-## To Do 
 
-#### Neovim has no support for python venvs. 
-[direnv](https://direnv.net/) + tmux seemes to be the solution for this. Configuring envs on a directory basis
-setup: https://direnv.net/man/direnv.1.html
-
-#### Vimhack dotfiles super dope similar to this 
-https://api.mtr.pub/vimhack/dotfiles
-
-Done
-#### Tmux persist reboot
-https://github.com/tmux-plugins/tmux-resurrect
-
-#### Fork mac-dev-playbook
-This pretty much looks exactly like what I want to do lol
-https://github.com/geerlingguy/mac-dev-playbook
-possible cons to this?
-- only for macOS
-
-Probably will want to fork that and devKit can be a "flavor" of that.
-#### Automate devKit:
-- [Ansible](https://www.ansible.com/resources/get-started) - for automating the deployment and maintainence of server configurations
-- - Install alacritty
-- - Install brew
-- - - Install OhMyZsh
-- - - Install python
-- - - - Install pyenv
-- - - - Install virtualenvwrapper - (alternative to virtualenv)
-- - - Install node
-- - - - Install n (alternative to nvm) 
-- - - - Install typescript
-- - - - Install yarn
-- - - Install docker
-- - - Install neovim
-- - Install lunar vim
-- - Install tmux
-- - - Install tmux config
