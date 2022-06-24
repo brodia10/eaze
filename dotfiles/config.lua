@@ -104,7 +104,16 @@ lvim.plugins = {
     end
   },
   { "ellisonleao/glow.nvim", branch = 'main' },
-  { 'iamcco/markdown-preview.nvim' },
+  {
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  },
+  { "iamcco/markdown-preview.nvim", run = "cd app && npm install",
+    setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, },
+  { 'christoomey/vim-tmux-navigator' },
+  -- { 'vimpostor/vim-tpipeline' }
+  -- https://github.com/xiyaowong/nvim-transparent
+  -- { 'xiyaowong/nvim-transparent' }
 }
 
 
@@ -112,10 +121,18 @@ vim.cmd([[
   "Add blank line above the current line without exiting normal mode"
   "leader + O"
   nnoremap <leader>o o<Esc>0"_D
+  
   "Add blank line below current line without exiting normal mode
   nnoremap <leader>O O<Esc>0"_D
+  
   "Glow Markdown Preview - leader + p + p
-  noremap <leader>pp :Glow<CR>"
+  noremap <leader>- :MarkdownPreview<CR>"
+  
+  "Nvim-transparent- leader + t
+  " noremap <leader>tt :TransparentToggle<CR>"
+  
+  "Soft wrap text, dont break words up
+  set wrap linebreak
   
   "Treesitter based folding 
   "set foldmethod=expr
@@ -166,6 +183,24 @@ require("toggleterm").setup
     },
   },
 }
+
+--  nvim-transparent config
+--  Removes all color from (neo)vim background
+-- require("transparent").setup({
+--   enable = false, -- boolean: enable transparent
+--   extra_groups = { -- table/string: additional groups that should be cleared
+--     -- In particular, when you set it to 'all', that means all available groups
+
+--     -- example of akinsho/nvim-bufferline.lua
+--     "BufferLineTabClose",
+--     "BufferlineBufferSelected",
+--     "BufferLineFill",
+--     "BufferLineBackground",
+--     "BufferLineSeparator",
+--     "BufferLineIndicatorSelected",
+--   },
+--   exclude = {}, -- table: groups you don't want to clear
+-- })
 
 -- Persist Terminal
 vim.o.hidden = true
@@ -219,3 +254,14 @@ vim.api.nvim_create_autocmd("FileType", {
     require("nvim-treesitter.highlight").attach(0, "bash")
   end,
 })
+local onedarkpro = require("onedarkpro")
+onedarkpro.options = {
+  bold = true, -- Use the themes opinionated bold styles?
+  italic = true, -- Use the themes opinionated italic styles?
+  underline = true, -- Use the themes opinionated underline styles?
+  undercurl = true, -- Use the themes opinionated undercurl styles?
+  cursorline = true, -- Use cursorline highlighting?
+  transparency = true, -- Use a transparent background?
+  terminal_colors = true, -- Use the theme's colors for Neovim's :terminal?
+  window_unfocussed_color = true
+}
