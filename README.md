@@ -75,8 +75,8 @@ https://frontendmasters.com/courses/developer-productivity/
 [direnv](https://direnv.net/) + tmux seemes to be the solution for this. Configuring envs on a directory basis
 setup: https://direnv.net/man/direnv.1.html
 
-#### https://api.mtr.pub/vimhack/dotfiles
-Very cool project, very similar setup to this.
+#### Vimhack dotfiles super dope similar to this 
+https://api.mtr.pub/vimhack/dotfiles
 
 Done
 #### Tmux persist reboot
