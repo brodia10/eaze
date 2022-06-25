@@ -32,9 +32,10 @@ Probably will want to fork that and devKit can be a "flavor" of that.
 
 #### Ansible Playbook sketch:
 - [Ansible](https://www.ansible.com/resources/get-started) - for automating the deployment and maintainence of server configurations
-- - Install alacritty
+- Install OhMyZsh
 - - Install brew
-- - - Install OhMyZsh
+- - - Install asdf
+- - - Install alacritty
 - - - Install python
 - - - - Install pyenv
 - - - - Install virtualenvwrapper - (alternative to virtualenv)

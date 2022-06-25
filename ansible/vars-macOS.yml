@@ -1,0 +1,72 @@
+---
+brew:
+  cask_packages:
+    # https://github.com/alacritty/alacritty
+    alacritty: alacritty
+    # https://ianyh.com/amethyst/
+    amethyst: amethyst
+    #
+    slack: slack
+    #
+    google-chrome: google-chrome
+    #
+    firefox: firefox
+
+  packages:
+    # https://asdf-vm.com/guide/introduction.html#how-it-works
+    asdf: asdf
+    # https://python.org
+    python: python
+    # https://nodejs.org/en/
+    node: node
+    # https://neovim.io/
+    neovim: neovim
+    # https://github.com/tmux/tmux/wiki
+    tmux: tmux
+    # https://www.docker.com/
+    docker: docker
+# end brew
+
+# Libraries/Plugins that will be installed by the core programs.
+libs:
+  node:
+    - yarn
+    - typescript
+  python:
+    - virtualenvwrapper
+  neovim: 
+    - lunarvim
+  ohMyZsh:
+    - zsh-auto-suggestions
+    - zsh-auto-complete
+    - zsh-syntax-highlighting
+    - zsh-git
+    - zsh vi mode
+
+
+
+
+# TODO 
+# Each one will need to install the config from somewhere to,
+# but that will be done in separate files
+
+# - Install OhMyZsh
+# - - Install brew
+# - - - Install asdf
+# - - - Install alacritty
+# - - - Install python
+# - - - - Install virtualenvwrapper - (alternative to virtualenv)
+# - - - Install node
+# - - - - Install typescript
+# - - - - Install yarn
+# - - - Install docker
+# - - - Install neovim
+# - - Install lunar vim
+# - - Install tmux
+# - - - Install tmux config
+# - docker
+# - dropbox
+# - firefox
+# - google-chrome
+# - google-drive
+# - google-hangouts

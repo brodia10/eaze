@@ -1,0 +1,12 @@
+---
+- name: Install alacritty 
+  hosts: "localhost"
+  become: false
+  tasks:
+    brew:
+      name:
+      - alacritty
+    tags:
+      - install
+      - alacritty
+      - homebrew 
