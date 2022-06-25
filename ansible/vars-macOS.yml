@@ -11,7 +11,6 @@ brew:
     google-chrome: google-chrome
     #
     firefox: firefox
-
   packages:
     # https://asdf-vm.com/guide/introduction.html#how-it-works
     asdf: asdf
@@ -43,7 +42,7 @@ libs:
     - zsh-git
     - zsh vi mode
 
-
+asdfasdfdaf
 
 
 # TODO 
