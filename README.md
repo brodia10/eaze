@@ -1,12 +1,14 @@
 
-## devKit - An elegeant, modern, and cross-platform development environment
+## HJKL - LunarVim + Tmux + Alacritty + ASDF + The simplest/best configs for all of them = the developer experience you deserve™️
 
-**  the developer experience that you deserve™️
 <br>
 
 ## To Do 
 #### ASDF - one version manager to rule them all built by the Homebrew team.
 https://asdf-vm.com/guide/introduction.html#how-it-works
+
+#### Telescope Bookmarks
+https://github.com/dhruvmanila/telescope-bookmarks.nvim
 
 
 #### Neovim has no support for python venvs. 
