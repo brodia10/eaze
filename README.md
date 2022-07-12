@@ -1,5 +1,6 @@
 
-## eaze - LunarVim + Tmux + Alacritty + ASDF + The best configs for all of them = the developer experience you deserve™️
+## eaze - the developer experience you deserve™️ 
+## LunarVim + Tmux + Alacritty + ASDF + The best configs for all of them
 todo
 
 - Telescope Extensions: https://github.com/nvim-telescope/tel...
