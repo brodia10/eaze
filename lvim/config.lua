@@ -22,7 +22,7 @@ vim.o.background = "dark"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
-lvim.builtin.project.datapath = "/Users/brook/code/"
+-- lvim.bultin.project.datapath = "/Users/brook/code/"
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
@@ -67,10 +67,10 @@ lvim.builtin.lualine.inactive_sections = {
 }
 
 lvim.builtin.lualine.sections.lualine_a = { "mode" }
-lvim.builtin.lualine.sections.lualine_b = { "branch", "python_env", "filename", "diagnostics" }
-lvim.builtin.lualine.sections.lualine_c = {}
-lvim.builtin.lualine.sections.lualine_x = { "filetype" }
-lvim.builtin.lualine.sections.lualine_y = { "diff" }
+lvim.builtin.lualine.sections.lualine_b = { "python_env", "filename", }
+lvim.builtin.lualine.sections.lualine_c = { "filetype" }
+-- lvim.builtin.lualine.sections.lualine_c = { "diagnostics" }
+lvim.builtin.lualine.sections.lualine_x = { "diagnostics", "branch", "diff" }
 lvim.builtin.lualine.sections.lualine_z = { "progress", "location" }
 lvim.builtin.lualine.options = {
   icons_enabled = true,
@@ -111,7 +111,13 @@ lvim.plugins = {
   { "iamcco/markdown-preview.nvim", run = "cd app && npm install",
     setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, },
   { 'christoomey/vim-tmux-navigator' },
-  -- { 'vimpostor/vim-tpipeline' }
+  {
+    'dhruvmanila/telescope-bookmarks.nvim',
+    -- Uncomment if the selected browser is Firefox
+    requires = {
+      'tami5/sqlite.lua',
+    }
+  },
   -- https://github.com/xiyaowong/nvim-transparent
   -- { 'xiyaowong/nvim-transparent' }
 }
@@ -128,12 +134,16 @@ vim.cmd([[
   "Glow Markdown Preview - leader + p + p
   noremap <leader>- :MarkdownPreview<CR>"
   
+ "Telescop Bookmakrks
+  noremap <leader>sb :Telescope bookmarks<CR>"
+
   "Nvim-transparent- leader + t
-  " noremap <leader>tt :TransparentToggle<CR>"
+  " noremap <leader>m :TransparentToggle<CR>"
   
-  "Soft wrap text, dont break words up
-  set wrap linebreak
+  "Soft wrap text
+  set wrap 
   
+
   "Treesitter based folding 
   "set foldmethod=expr
   "set foldexpr=nvim_treesitter#foldexpr()
@@ -181,6 +191,37 @@ require("toggleterm").setup
       border = "#268746",
       background = "#000000",
     },
+  },
+}
+require('telescope').load_extension('bookmarks')
+
+-- require('telescope').extensions.bookmarks.bookmarks(
+--   require('telescope.themes').get_dropdown {
+--     layout_config = {
+--       width = 0.8,
+--       height = 0.8,
+--     },
+--     previewer = false,
+--   }
+-- )
+-- Load telescope bookmarks with custom config
+lvim.builtin.telescope.extensions = {
+  bookmarks = {
+    -- Available: 'brave', 'buku', 'chrome', 'chrome_beta', 'edge', 'safari', 'firefox', 'vivaldi'
+    selected_browser = 'firefox',
+
+    -- Either provide a shell command to open the URL
+    url_open_command = 'open',
+
+    -- Or provide the plugin name which is already installed
+    -- Available: 'vim_external', 'open_browser'
+    url_open_plugin = nil,
+
+    -- Show the full path to the bookmark instead of just the bookmark name
+    full_path = true,
+
+    -- Provide a custom profile name for Firefox
+    firefox_profile_name = "bb"
   },
 }
 
