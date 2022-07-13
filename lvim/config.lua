@@ -31,7 +31,6 @@ lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 -- lvim.builtin.nvimtree.show_icons.git =  L
 lvim.builtin.nvimtree.setup.git.enable = true
--- if you don't want all the parsers change this to a table of the ones you want
 ----------------------------
 -- Treesitter
 ----------------------------
@@ -56,30 +55,30 @@ lvim.builtin.treesitter = {
   },
 }
 -- Lua Line Config
-lvim.builtin.lualine.style = "default"
+-- lvim.builtin.lualine.style = "default"
 lvim.builtin.lualine.inactive_sections = {
   lualine_a = {},
   lualine_b = {},
   lualine_c = { 'filename' },
-  lualine_x = { 'location' },
+  lualine_x = { 'filetype' },
   lualine_y = {},
   lualine_z = {}
 }
 
-lvim.builtin.lualine.sections.lualine_a = { "mode" }
-lvim.builtin.lualine.sections.lualine_b = { "python_env", "filename", }
-lvim.builtin.lualine.sections.lualine_c = { "filetype" }
--- lvim.builtin.lualine.sections.lualine_c = { "diagnostics" }
-lvim.builtin.lualine.sections.lualine_x = { "diagnostics", "branch", "diff" }
-lvim.builtin.lualine.sections.lualine_z = { "progress", "location" }
+-- lvim.builtin.lualine.sections.lualine_a = { "mode" }
+-- lvim.builtin.lualine.sections.lualine_b = { "python_env", "branch", "diagnostics", }
+-- lvim.builtin.lualine.sections.lualine_x = { "location", "progress" }
+-- -- lvim.builtin.lualine.sections.lualine_c = { "diagnostics" }
+-- lvim.builtin.lualine.sections.lualine_y = { "filetype" }
+-- lvim.builtin.lualine.sections.lualine_z = { "filename" }
 lvim.builtin.lualine.options = {
   icons_enabled = true,
   theme = 'auto',
   component_separators = { left = '', right = '' },
   section_separators = { left = '', right = '' },
   disabled_filetypes = {},
-  -- always_divide_middle = true,
-  globalstatus = true,
+  --   always_divide_middle = true,
+  -- globalstatus = true,
   path = 1
 }
 
@@ -135,7 +134,7 @@ vim.cmd([[
   noremap <leader>- :MarkdownPreview<CR>"
   
  "Telescop Bookmakrks
-  noremap <leader>sb :Telescope bookmarks<CR>"
+  noremap <leader>si :Telescope bookmarks<CR>"
 
   "Nvim-transparent- leader + t
   " noremap <leader>m :TransparentToggle<CR>"
@@ -193,17 +192,9 @@ require("toggleterm").setup
     },
   },
 }
-require('telescope').load_extension('bookmarks')
 
--- require('telescope').extensions.bookmarks.bookmarks(
---   require('telescope.themes').get_dropdown {
---     layout_config = {
---       width = 0.8,
---       height = 0.8,
---     },
---     previewer = false,
---   }
--- )
+
+
 -- Load telescope bookmarks with custom config
 lvim.builtin.telescope.extensions = {
   bookmarks = {
@@ -221,9 +212,19 @@ lvim.builtin.telescope.extensions = {
     full_path = true,
 
     -- Provide a custom profile name for Firefox
-    firefox_profile_name = "bb"
+    firefox_profile_name = nil
   },
 }
+
+require('telescope').extensions.bookmarks.bookmarks(
+  require('telescope.themes').get_dropdown {
+    layout_config = {
+      width = 0.8,
+      height = 0.8,
+    },
+    previewer = false,
+  }
+)
 
 --  nvim-transparent config
 --  Removes all color from (neo)vim background
@@ -306,3 +307,5 @@ onedarkpro.options = {
   terminal_colors = true, -- Use the theme's colors for Neovim's :terminal?
   window_unfocussed_color = true
 }
+
+require("telescope").load_extension("bookmarks")
