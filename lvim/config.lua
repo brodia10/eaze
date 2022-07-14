@@ -31,6 +31,7 @@ lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 -- lvim.builtin.nvimtree.show_icons.git =  L
 lvim.builtin.nvimtree.setup.git.enable = true
+-- if you don't want all the parsers change this to a table of the ones you want
 ----------------------------
 -- Treesitter
 ----------------------------
@@ -64,13 +65,12 @@ lvim.builtin.lualine.inactive_sections = {
   lualine_y = {},
   lualine_z = {}
 }
-
--- lvim.builtin.lualine.sections.lualine_a = { "mode" }
--- lvim.builtin.lualine.sections.lualine_b = { "python_env", "branch", "diagnostics", }
--- lvim.builtin.lualine.sections.lualine_x = { "location", "progress" }
--- -- lvim.builtin.lualine.sections.lualine_c = { "diagnostics" }
--- lvim.builtin.lualine.sections.lualine_y = { "filetype" }
--- lvim.builtin.lualine.sections.lualine_z = { "filename" }
+lvim.builtin.lualine.sections.lualine_a = { "filename", }
+lvim.builtin.lualine.sections.lualine_b = { "branch", "diagnostics", "python_env" }
+-- lvim.builtin.lualine.sections.lualine_c = { "python_env" }
+lvim.builtin.lualine.sections.lualine_x = { "location", "progress" }
+lvim.builtin.lualine.sections.lualine_y = { "diff", "filetype" }
+lvim.builtin.lualine.sections.lualine_z = { "mode" }
 lvim.builtin.lualine.options = {
   icons_enabled = true,
   theme = 'auto',
@@ -196,25 +196,25 @@ require("toggleterm").setup
 
 
 -- Load telescope bookmarks with custom config
-lvim.builtin.telescope.extensions = {
-  bookmarks = {
-    -- Available: 'brave', 'buku', 'chrome', 'chrome_beta', 'edge', 'safari', 'firefox', 'vivaldi'
-    selected_browser = 'firefox',
+-- lvim.builtin.telescope.extensions = {
+--   bookmarks = {
+--     -- Available: 'brave', 'buku', 'chrome', 'chrome_beta', 'edge', 'safari', 'firefox', 'vivaldi'
+--     selected_browser = 'firefox',
 
-    -- Either provide a shell command to open the URL
-    url_open_command = 'open',
+--     -- Either provide a shell command to open the URL
+--     url_open_command = 'open',
 
-    -- Or provide the plugin name which is already installed
-    -- Available: 'vim_external', 'open_browser'
-    url_open_plugin = nil,
+--     -- Or provide the plugin name which is already installed
+--     -- Available: 'vim_external', 'open_browser'
+--     url_open_plugin = nil,
 
-    -- Show the full path to the bookmark instead of just the bookmark name
-    full_path = true,
+--     -- Show the full path to the bookmark instead of just the bookmark name
+--     full_path = true,
 
-    -- Provide a custom profile name for Firefox
-    firefox_profile_name = nil
-  },
-}
+--     -- Provide a custom profile name for Firefox
+--     firefox_profile_name = nil
+--   },
+-- }
 
 require('telescope').extensions.bookmarks.bookmarks(
   require('telescope.themes').get_dropdown {
@@ -309,3 +309,24 @@ onedarkpro.options = {
 }
 
 require("telescope").load_extension("bookmarks")
+require('telescope').setup {
+  extensions = {
+    bookmarks = {
+      -- Available: 'brave', 'buku', 'chrome', 'chrome_beta', 'edge', 'safari', 'firefox', 'vivaldi'
+      selected_browser = 'firefox',
+
+      -- Either provide a shell command to open the URL
+      url_open_command = 'open',
+
+      -- Or provide the plugin name which is already installed
+      -- Available: 'vim_external', 'open_browser'
+      url_open_plugin = nil,
+
+      -- Show the full path to the bookmark instead of just the bookmark name
+      full_path = true,
+
+      -- Provide a custom profile name for Firefox
+      firefox_profile_name = nil,
+    },
+  }
+}
