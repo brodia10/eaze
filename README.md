@@ -15,32 +15,27 @@ todo
 
 ## To Do 
 #### ASDF - one version manager to rule them all built by the Homebrew team.
-https://asdf-vm.com/guide/introduction.html#how-it-works
+https://asdf-vm.com/guide/introduction.html#how-it-works --- Is this worth it? Having trouble with Python. 
 
 #### Telescope Bookmarks
 https://github.com/dhruvmanila/telescope-bookmarks.nvim
-
-
-#### Neovim has no support for python venvs. 
-Possible solutions:
-
-[direnv](https://direnv.net/) + tmux seemes to be the solution for this. Configuring envs on a directory basis
-setup: https://direnv.net/man/direnv.1.html
 
 #### Vimhack dotfiles super dope similar to this 
 https://api.mtr.pub/vimhack/dotfiles
 
 Done
+
+#### telescope stuff
+#### fnction names, vars, etc.
+https://github.com/preservim/tagbar
+
+
 #### Tmux persist reboot
 https://github.com/tmux-plugins/tmux-resurrect
 
 #### Fork mac-dev-playbook
-This pretty much looks exactly like what I want to do lol
 https://github.com/geerlingguy/mac-dev-playbook
-possible cons to this?
-- only for macOS
 
-Probably will want to fork that and devKit can be a "flavor" of that.
 
 #### Ansible Playbook sketch:
 - [Ansible](https://www.ansible.com/resources/get-started) - for automating the deployment and maintainence of server configurations
