@@ -10,6 +10,8 @@ an executable
 -- General
 lvim.log.level = "warn"
 lvim.format_on_save = true
+lvim.transparent_window = false
+
 
 -- Theme
 lvim.colorscheme = "onedarkpro"
@@ -107,20 +109,42 @@ lvim.plugins = {
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
   },
-  { "iamcco/markdown-preview.nvim", run = "cd app && npm install",
-    setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, },
+  -- { "iamcco/markdown-preview.nvim", run = "cd app && npm install",
+  --   setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, },
   { 'christoomey/vim-tmux-navigator' },
-  {
-    'dhruvmanila/telescope-bookmarks.nvim',
-    -- Uncomment if the selected browser is Firefox
+  { "AckslD/nvim-neoclip.lua",
     requires = {
-      'tami5/sqlite.lua',
-    }
+      { 'kkharji/sqlite.lua', module = 'sqlite' },
+      -- you'll need at least one of these
+      -- {'nvim-telescope/telescope.nvim'},
+      -- {'ibhagwan/fzf-lua'},
+    },
+    config = function()
+      require('neoclip').setup()
+    end,
   },
-  -- https://github.com/xiyaowong/nvim-transparent
-  -- { 'xiyaowong/nvim-transparent' }
+  { 'cljoly/telescope-repo.nvim' },
+  { 'preservim/tagbar' }
+  -- {
+  --   'dhruvmanila/telescope-bookmarks.nvim',
+  --   -- Uncomment if the selected browser is Firefox
+  --   requires = {
+  --     'tami5/sqlite.lua',
+  --   }
+  -- },
+
 }
 
+lvim.builtin.telescope.extensions.repo = {
+  list = {
+    fd_opts = {
+      "--no-ignore-vcs",
+    },
+    search_dirs = {
+      "~/code",
+    },
+  },
+}
 
 vim.cmd([[
   "Add blank line above the current line without exiting normal mode"
@@ -132,20 +156,24 @@ vim.cmd([[
   
   "Glow Markdown Preview - leader + p + p
   noremap <leader>- :MarkdownPreview<CR>"
-  
- "Telescop Bookmakrks
-  noremap <leader>si :Telescope bookmarks<CR>"
 
+   "Telescop Git Repos
+  noremap <leader>k :Telescope repo list<CR>"
+
+  noremap <leader>m :TagbarToggle<CR>"
+  
+ " "Telescop Bookmakrks
+  " noremap <leader>si :Telescope bookmarks<CR>"
+
+  " Tlelscope neoclip"
+  noremap <leader>j :Telescope neoclip<CR>"
   "Nvim-transparent- leader + t
   " noremap <leader>m :TransparentToggle<CR>"
   
   "Soft wrap text
   set wrap 
-  
 
-  "Treesitter based folding 
-  "set foldmethod=expr
-  "set foldexpr=nvim_treesitter#foldexpr()
+  
 ]])
 
 vim.opt.termguicolors = true
@@ -169,81 +197,6 @@ require("indent_blankline").setup {
     "IndentBlanklineIndent6",
   },
 }
-
-
-require("toggleterm").setup
-{
-  hide_numbers = true,
-  shade_filetypes = {},
-  shade_terminals = true,
-  shading_factor = 2,
-  start_in_insert = true,
-  insert_mappings = true,
-  persist_size = true,
-  direction = "horizontal",
-  close_on_exit = true,
-  shell = vim.o.shell,
-  float_opts = {
-    border = "shadow",
-    winblend = 0,
-    highlights = {
-      border = "#268746",
-      background = "#000000",
-    },
-  },
-}
-
-
-
--- Load telescope bookmarks with custom config
--- lvim.builtin.telescope.extensions = {
---   bookmarks = {
---     -- Available: 'brave', 'buku', 'chrome', 'chrome_beta', 'edge', 'safari', 'firefox', 'vivaldi'
---     selected_browser = 'firefox',
-
---     -- Either provide a shell command to open the URL
---     url_open_command = 'open',
-
---     -- Or provide the plugin name which is already installed
---     -- Available: 'vim_external', 'open_browser'
---     url_open_plugin = nil,
-
---     -- Show the full path to the bookmark instead of just the bookmark name
---     full_path = true,
-
---     -- Provide a custom profile name for Firefox
---     firefox_profile_name = nil
---   },
--- }
-
-require('telescope').extensions.bookmarks.bookmarks(
-  require('telescope.themes').get_dropdown {
-    layout_config = {
-      width = 0.8,
-      height = 0.8,
-    },
-    previewer = false,
-  }
-)
-
---  nvim-transparent config
---  Removes all color from (neo)vim background
--- require("transparent").setup({
---   enable = false, -- boolean: enable transparent
---   extra_groups = { -- table/string: additional groups that should be cleared
---     -- In particular, when you set it to 'all', that means all available groups
-
---     -- example of akinsho/nvim-bufferline.lua
---     "BufferLineTabClose",
---     "BufferlineBufferSelected",
---     "BufferLineFill",
---     "BufferLineBackground",
---     "BufferLineSeparator",
---     "BufferLineIndicatorSelected",
---   },
---   exclude = {}, -- table: groups you don't want to clear
--- })
-
 -- Persist Terminal
 vim.o.hidden = true
 
@@ -296,11 +249,12 @@ vim.api.nvim_create_autocmd("FileType", {
     require("nvim-treesitter.highlight").attach(0, "bash")
   end,
 })
+
+
 local onedarkpro = require("onedarkpro")
 onedarkpro.options = {
   bold = true, -- Use the themes opinionated bold styles?
   italic = true, -- Use the themes opinionated italic styles?
-  underline = true, -- Use the themes opinionated underline styles?
   undercurl = true, -- Use the themes opinionated undercurl styles?
   cursorline = true, -- Use cursorline highlighting?
   transparency = true, -- Use a transparent background?
@@ -308,25 +262,39 @@ onedarkpro.options = {
   window_unfocussed_color = true
 }
 
-require("telescope").load_extension("bookmarks")
-require('telescope').setup {
-  extensions = {
-    bookmarks = {
-      -- Available: 'brave', 'buku', 'chrome', 'chrome_beta', 'edge', 'safari', 'firefox', 'vivaldi'
-      selected_browser = 'firefox',
 
-      -- Either provide a shell command to open the URL
-      url_open_command = 'open',
+-- lvim.builtin.telescope.extensions.bookmarks = {
+--   -- Available: 'brave', 'buku', 'chrome', 'chrome_beta', 'edge', 'safari', 'firefox', 'vivaldi'
+--   selected_browser = 'firefox',
 
-      -- Or provide the plugin name which is already installed
-      -- Available: 'vim_external', 'open_browser'
-      url_open_plugin = nil,
+--   -- Either provide a shell command to open the URL
+--   url_open_command = 'open',
 
-      -- Show the full path to the bookmark instead of just the bookmark name
-      full_path = true,
+--   -- Or provide the plugin name which is already installed
+--   -- Available: 'vim_external', 'open_browser'
+--   url_open_plugin = nil,
 
-      -- Provide a custom profile name for Firefox
-      firefox_profile_name = nil,
-    },
-  }
-}
+--   -- Show the full path to the bookmark instead of just the bookmark name
+--   full_path = true,
+
+--   -- Provide a custom profile name for Firefox
+--   firefox_profile_name = 'default-release',
+-- }
+
+-- require('telescope').extensions.bookmarks.bookmarks(
+--   require('telescope.themes').get_dropdown {
+--     layout_config = {
+--       width = 0.8,
+--       height = 0.8,
+--     },
+--     previewer = false,
+--   }
+-- )
+
+
+-- Telescope Extensions and other stuff do after config()
+lvim.builtin.telescope.on_config_done = function(telescope)
+  pcall(telescope.load_extension, "repo")
+  pcall(telescope.load_extension, "neoclip")
+  -- any other extensions loading
+end
