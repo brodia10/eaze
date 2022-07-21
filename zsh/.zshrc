@@ -20,6 +20,7 @@ plugins=(
     zsh-syntax-highlighting
     zsh-autosuggestions
     vi-mode
+    asdf
 )
 
 # Enable vi mode
@@ -35,20 +36,44 @@ VI_MODE_SET_CURSOR=true
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='mvim'
+  export EDITOR='lvim'
 fi
 
+# Ansible Playbook CLI auto-complete
+eval $(register-python-argcomplete ansible)
+eval $(register-python-argcomplete ansible-config)
+eval $(register-python-argcomplete ansible-console)
+eval $(register-python-argcomplete ansible-doc)
+eval $(register-python-argcomplete ansible-galaxy)
+eval $(register-python-argcomplete ansible-inventory)
+eval $(register-python-argcomplete ansible-playbook)
+eval $(register-python-argcomplete ansible-pull)
+eval $(register-python-argcomplete ansible-vault)
+
+### Aliases ###
+#Neovim
+# Shortcut to open lvim
+alias v="lvim"
+# alias all vims and noevims to lunar vim
+alias nvim="lvim"
+alias vim="lvim"
+
+### Tmux ###
+
+# Attach to last session 
+alias ta="tmux a"
+# Kill server
+alias tk="tmux kill-server"
+# Create new session with the name option
+alias tn="tmux new -s"
+
+### Sourcing Files ###
 # Reload oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# Reload NVM
-source /usr/local/opt/nvm/nvm.sh
-
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
-
-# Aliases
-# alias lvim to `vim`
-alias vim="/Users/brook/.local/bin/lvim"
+export PATH="/Users/brook/.local/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
