@@ -67,6 +67,9 @@ alias tk="tmux kill-server"
 # Create new session with the name option
 alias tn="tmux new -s"
 
+# tmuxinator
+alias mux="tmuxinator"
+
 ### Sourcing Files ###
 # Reload oh-my-zsh
 source $ZSH/oh-my-zsh.sh
